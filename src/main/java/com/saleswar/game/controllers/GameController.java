@@ -12,4 +12,9 @@ public String index() {
     return "index";
 }
 
+@GetMapping("/rules")
+public String rules() {
+    return "rules";
+}
+
 }
