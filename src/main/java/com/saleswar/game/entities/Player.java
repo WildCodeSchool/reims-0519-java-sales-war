@@ -1,4 +1,4 @@
-package src.main.java.com.saleswar.game.entities;
+package com.saleswar.game.entities;
 
 public class Player {
     private int id;
