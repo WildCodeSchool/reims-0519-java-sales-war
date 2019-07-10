@@ -17,4 +17,9 @@ public String rules() {
     return "rules";
 }
 
+@GetMapping("/scores")
+public String scores() {
+    return "scores";
+}
+
 }
