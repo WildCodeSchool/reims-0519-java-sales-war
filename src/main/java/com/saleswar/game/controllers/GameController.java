@@ -2,6 +2,7 @@ package com.saleswar.game.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -17,9 +18,14 @@ class GameController {
         return "rules";
     }
 
-    @GetMapping("/scores")
+    @PostMapping("/scores")
     public String scores() {
         return "scores";
+    }
+
+    @PostMapping("/game")
+    public String game() {
+        return "game";
     }
 
 }
