@@ -35,7 +35,7 @@ public class CharacterRepository {
         }
         return null;
     }
-//highheels
+    //highheels
     public static int uppercut() {
         double probability = Math.random();
         int damage = 70;
@@ -45,7 +45,7 @@ public class CharacterRepository {
             return 0;
         }
     }
-// handbag
+    // handbag
     public static int punch() {
         int damage = 30;
             return damage;
@@ -95,7 +95,7 @@ public class CharacterRepository {
     }
 
     public static int insertScore() {
-        //TODO : insèrer le score.
+        //insèrer le score.
     return 0;
     }
 }

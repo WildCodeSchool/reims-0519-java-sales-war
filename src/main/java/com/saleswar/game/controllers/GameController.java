@@ -3,7 +3,7 @@ package com.saleswar.game.controllers;
 import javax.servlet.http.HttpSession;
 
 import com.saleswar.game.repository.CharacterRepository;
-import com.saleswar.game.repository.ScoreRepository;
+//import com.saleswar.game.repository.ScoreRepository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,6 @@ class GameController {
         return "index";
     }
 
-   
     @GetMapping("/rules")
     public String rules() {
         return "rules";
@@ -62,14 +61,17 @@ class GameController {
         model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
         model.addAttribute("lifeP3", characterRepository.getFighterById(3).getLife());
 
+        model.addAttribute("nickname1", session.getAttribute("nickname1"));
+        model.addAttribute("nickname2", session.getAttribute("nickname2"));
+
         return "game";
     }
 
     @PostMapping("/game")
-    public String fight(HttpSession session, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
+    public String fight(HttpSession session, Model model, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
 
-        session.setAttribute("player1", nickname1);
-        session.setAttribute("player2", nickname2);
+        session.setAttribute("nickname1", nickname1);
+        session.setAttribute("nickname2", nickname2);
 
         boolean fight = true;
 
@@ -119,10 +121,10 @@ class GameController {
             
             else {
                 session.setAttribute("currentPlayer", bigMomaId);
-            }
-            
-        }
 
+            }
+
+        }
         if(fight) {
             return "redirect:/game";
         } 
