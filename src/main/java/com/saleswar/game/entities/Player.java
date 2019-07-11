@@ -11,7 +11,10 @@ public Player( int id, String name){
   
 }
 
-    public int getId() {
+    public Player(int i, int j, String[] strings) {
+}
+
+	public int getId() {
         return id;
     }
 
