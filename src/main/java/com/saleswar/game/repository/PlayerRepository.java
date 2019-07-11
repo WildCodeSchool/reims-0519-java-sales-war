@@ -7,29 +7,29 @@ import com.saleswar.game.entities.Player;
 
 public class PlayerRepository {
 
-    private List<Player> rooms;
+    private List<Player> players;
 
     public PlayerRepository() {
 
-        this.rooms = new ArrayList<Player>();
+        this.players = new ArrayList<Player>();
 
-        rooms.add(new Player(1, "fufu"));
+        players.add(new Player(1, "fufu"));
        
     }
 
-    public List<Player> getRooms() {
+    public List<Player> getPlayer() {
 
-        return rooms;
+        return players;
     }
 
     
-    public Player getRoomById(int id) {
+    public Player getPlayerById(int id) {
 
-        for(Player room : rooms) {
+        for(Player player : players) {
 
-            if(room.getId() == id) {
+            if(player.getId() == id) {
 
-                return room;
+                return player;
             }
         }
         return null;
