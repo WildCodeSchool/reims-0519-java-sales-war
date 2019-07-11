@@ -18,7 +18,7 @@ class GameController {
         return "rules";
     }
 
-    @PostMapping("/scores")
+    @GetMapping("/scores")
     public String scores() {
         return "scores";
     }
