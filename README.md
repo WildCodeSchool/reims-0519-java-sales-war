@@ -21,3 +21,31 @@ Chaque joueur possèdent le choix entre :
 L’adversaire possèdent :
 Une attaque basique qui infligent 2 fois plus de dégâts que celle des joueurs.Si l’adversaire arrive à 0 points de vie, le combat est gagné.
 Si l’un des joueur arrive à 0 points de vie, le combat est perdu
+
+## Créer la base de données du jeu
+
+- Se connecter à la base de données en **root**.
+- Créer la base de donnée **sales_war**.
+- Sortir de la base de données et importer le fichier 
+**sales_war.sql**
+- Se connecter à la base de données nouvellement créer **sales_war**.
+- Créer un utilisateur **cafy**
+- Lui accorder les droits nécessaires pour la base de données **sales_war**.
+
+```
+mysql -u root -p 
+
+CREATE DATABASE sales_war;
+
+EXIT;
+
+mysql -u root -D sales_war -p < sales_war.sql
+
+mysql -u root -p -D sales_war
+
+CREATE USER 'cafy'@'localhost' IDENTIFIED BY 'Saleswar51!';
+
+GRANT ALL ON sales_war.* TO 'cafy'@'localhost';
+
+EXIT;
+```
