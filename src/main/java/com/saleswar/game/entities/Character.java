@@ -4,7 +4,7 @@ public class Character extends Player {
 
     private int life;
 
-    public Character(int id, String name) {
+    public Character(int id, String name,int life) {
         super(id, name);
         this.life = 100;
     }
@@ -17,5 +17,8 @@ public class Character extends Player {
         this.life = life;
     }
 
-    
+    public void takeHit(int hit) {
+        this.setLife(Math.max(this.getLife() - hit, 0));
+    }
+
 }
