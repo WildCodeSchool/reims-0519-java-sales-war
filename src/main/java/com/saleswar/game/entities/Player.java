@@ -10,9 +10,6 @@ public class Player {
         this.name = name;
     }
 
-    public Player(int i, int j, String[] strings) {
-}
-
 	public int getId() {
         return id;
     }

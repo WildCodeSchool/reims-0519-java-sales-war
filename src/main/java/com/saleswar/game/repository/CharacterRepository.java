@@ -26,7 +26,6 @@ public class CharacterRepository {
         characters.add(new Character(1,"Joueur 1", 100));
         characters.add(new Character(2, "Grand Mere",200));
     }
-
     public Character getFighterById(int id) {
         for(Character character : characters) {
             if(character.getId() == id) {
