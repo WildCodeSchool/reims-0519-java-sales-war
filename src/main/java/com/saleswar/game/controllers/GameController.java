@@ -3,7 +3,7 @@ package com.saleswar.game.controllers;
 import javax.servlet.http.HttpSession;
 
 import com.saleswar.game.repository.CharacterRepository;
-import com.saleswar.game.repository.ScoreRepository;
+//import com.saleswar.game.repository.ScoreRepository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,6 @@ class GameController {
         return "index";
     }
 
-   
     @GetMapping("/rules")
     public String rules() {
         return "rules";
@@ -44,6 +43,7 @@ class GameController {
     public String fight(Model model, HttpSession session) {
 
             session.setAttribute("currentPlayer", 1);
+            session.setAttribute("currentPlayer", 2);
             session.setAttribute("currentOpponent", 3);
             
 
@@ -56,54 +56,75 @@ class GameController {
                 model.addAttribute("message", "The attack failed");
             }
         }
-        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1" : "Grand Mère");
+        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1 & Player 2" : "Germaine la folle furieuse");
         model.addAttribute("lifeP1", characterRepository.getFighterById(1).getLife());
-        model.addAttribute("lifeP2", characterRepository.getFighterById(3).getLife());
+        model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
+        model.addAttribute("lifeP3", characterRepository.getFighterById(3).getLife());
+
+        model.addAttribute("nickname1", session.getAttribute("nickname1"));
+        model.addAttribute("nickname2", session.getAttribute("nickname2"));
 
         return "game";
     }
 
     @PostMapping("/game")
-    public String fight(HttpSession session, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
+    public String fight(HttpSession session, Model model, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
 
-        session.setAttribute("player1", nickname1);
-        session.setAttribute("player2", nickname2);
+        session.setAttribute("nickname1", nickname1);
+        session.setAttribute("nickname2", nickname2);
 
         boolean fight = true;
 
         if (attack != null) {
-            int currentPlayer = 1;
-            int currentOpponent = 3;
-            if (!session.getAttribute("currentPlayer").equals(1)) {
-                currentOpponent = 1;
+            int targetId = 1;
+            int bigMomaId = 3;
+
+            double probability = Math.random();
+            if (probability < 0.5) {
+                targetId = 2;
+            }
+            else {
+                targetId = 1;
             }
 
             int hit = 0;
             if (attack.equals("uppercut")) {
                 hit = CharacterRepository.uppercut();
-            } else {
+            }
+
+            else {
                 hit = CharacterRepository.punch();
             }
+
+            int hitBigMoma = 0;
+            hitBigMoma = characterRepository.bigMomaAttack();
+            
             if (hit > 0) {
                 session.setAttribute("lastAttackFailed", false);
-                characterRepository.getFighterById(currentOpponent).takeHit(hit);
-                characterRepository.getFighterById(currentPlayer).takeHit(hit/3);
-            } else {
+                characterRepository.getFighterById(bigMomaId).takeHit(hit);
+            }
+            if (hitBigMoma > 0) {
+                characterRepository.getFighterById(targetId).takeHit(hitBigMoma);
+            }
+
+            else {
                 session.setAttribute("lastAttackFailed", true);
             }
 
-            if (characterRepository.getFighterById(currentOpponent).getLife() == 0) {
+            if (characterRepository.getFighterById(bigMomaId).getLife() == 0) {
                 fight = false;
-            } 
-            if (characterRepository.getFighterById(currentPlayer).getLife() == 0) {
+            }
+
+            if (characterRepository.getFighterById(targetId).getLife() == 0) {
                 return "redirect:/loose";
             }
-            else {
-                session.setAttribute("currentPlayer", currentOpponent);
-            }
             
-        }
+            else {
+                session.setAttribute("currentPlayer", bigMomaId);
 
+            }
+
+        }
         if(fight) {
             return "redirect:/game";
         } 

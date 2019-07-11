@@ -22,8 +22,9 @@ public class CharacterRepository {
 
     public CharacterRepository() {
         this.characters = new ArrayList<Character>();
-        characters.add(new Character(1,"Joueur 1", 100));
-        characters.add(new Character(3 ,"Germaine", 250));
+        characters.add(new Character(1, "Stéphanie", 150));
+        characters.add(new Character(2, "Cecile", 150));
+        characters.add(new Character(3 ,"Germaine", 300));
 
     }
     public Character getFighterById(int id) {
@@ -34,7 +35,7 @@ public class CharacterRepository {
         }
         return null;
     }
-
+    //highheels
     public static int uppercut() {
         double probability = Math.random();
         int damage = 70;
@@ -44,20 +45,20 @@ public class CharacterRepository {
             return 0;
         }
     }
-
+    // handbag
     public static int punch() {
         int damage = 30;
             return damage;
     }
 
-    public static int bigMomaAttack() {
+    public int bigMomaAttack() {
         double probability = Math.random();
         if (probability < 0.8) {
-            int damage = 30;
+            int damage = 20;
             return damage;
         } 
         else {
-            int damage = 70;
+            int damage = 50;
             return damage;
         }
     }
@@ -94,7 +95,7 @@ public class CharacterRepository {
     }
 
     public static int insertScore() {
-        //todo faire linsert du score
+        //insèrer le score.
     return 0;
     }
 }

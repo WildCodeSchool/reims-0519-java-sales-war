@@ -1,28 +1,28 @@
-@font-face {
-    font-family: "Retro computer";
-    src: url("../CSS/retro_computer_personal_use.ttf");
-}
+
 
 h1 {
-    margin-left: 20vw;
+    margin: auto;
     font-size:100pt;
     font-family: 'IM Fell English SC', serif;
-    color:white;
-    text-shadow: 5px 5px black;
+    color:rgb(190, 7, 7);
+    text-shadow: 5px 5px rgb(14, 13, 13);
+    
 }
 
 body {
     font-family: "Retro computer", serif;
-    overflow: hidden;
-    letter-spacing: 1px;
+    background-image: url("../img/coin-magasin.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+}
+.card{
+    background-color: burlywood;
+    margin: 3px;
 }
 
-.dashed_border {
-    border: 4px dashed white;
-}
 
 .green_yellow {
-    color: greenyellow;
+    color: burlywood;
 }
 
 .bg_black_rgba {
@@ -32,26 +32,26 @@ body {
 /* -------- MAIN MENU -------- */
 
 .main_menu {
-    position: absolute;
-    left:0;
-    top:0;
-    height: 100vh;
-    width: 30vw;
+    width: 90vw;
     display:flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
 }
 
 .main_menu ul {
     list-style-type: none;
-    width:70%;
+    width: 100%;
+    
+    
+
 }
 
 .main_menu ul li {
     margin: 40px 0 40px 0;
     cursor: pointer;
-    height:100px;
+    height:50px;
+    display: inline-block;
 }
 
 .main_menu ul li a {
@@ -87,7 +87,7 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: justify;
-    background-image: url(../IMG/rules_bg.jpg);
+    background-image: url(../rules_bg.jpg);
     background-size: cover;
 }
 
@@ -105,53 +105,39 @@ body {
 /* -------- FIGHT PAGE -------- */
 
 .fight_container {
-    height:100vh;
-    width:100vw;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    text-align: justify;
-    background-image: url(../IMG/figth_bg.jpg);
+    background-image: url(../figth_bg.jpg);
     background-size: cover;
+   
 }
 
-.fight_container .fight {
-    display:flex;
-    margin-left: 20vw;
+.fight {
+    width: 100%;
+    display:grid;
+    grid-template-columns: 25% auto 25%;
+    grid-template-rows: repeat(2, auto);
 }
 
-.fight_container .description {
-    width:40vw;
-    height:40vh;
+.fight .attack-btn {
+    grid-row-start: 2;
+}
+
+.fight .description {
+    height:100%;
     margin:auto 20px auto 20px;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction: column;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
-.fight_container .description strong {
+.fight .description strong {
     color:white;
-}
-
-.fight_container .card {
-    width:12vw;
-}
-
-.fight_container .card button {
-    width: 100%;
-    font-size:8pt;
-}
-
-.fight_container .progress {
-    height:30px;
-    width:100%;
-    margin:10px 0 10px 0;
-}
-
-.fight_container .progress-bar {
-    width:100%;
 }
 
 /* -------- HOME PAGE -------- */
@@ -163,13 +149,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(../IMG/home_bg.jpg);
+    background-image: url(../home_bg.jpg);
     background-size: cover;
     color:white;
 }
 
 .home_container .home_title {
-    margin:70px auto auto auto;
+    margin: auto auto auto;
 }
 
 .home_container p {
@@ -225,73 +211,5 @@ body {
     color: black;
 }
 
-/* -------- RANKING PAGE -------- */
-
-.ranking_container {
-    height:100vh;
-    width:100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: justify;
-    background-image: url(../IMG/ranking_bg.jpg);
-    background-size: cover;
-    text-align:center;
-}
-
-.ranking_container .ranking {
-    margin-left:20vw;
-    text-align:center;
-    font-size:15pt;
-}
-
-table th, table td {
-    border:1px dashed white;
-    padding:20px;
-}
-
-table tr:first-child {
-    color:white;
-}
-
-/* -------- WINNER PAGE -------- */
-
-.win_container {
-    height:100vh;
-    width:100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: justify;
-    background-image: url(../IMG/winner_bg.jpg);
-    background-size: cover;
-}
-
-.h1win{
-    text-align:center;
-    z-index:20;
-}
-
-.overlay{
-    background-color: rgba(0, 0, 0, 0.3);
-    height:100vh;
-    width:100vw;
-    position:absolute;
-    left:0;
-    top:0;
-    z-index:0;
-}
 
 /* -------- FIGHT FORM -------- */
-
-.fight_container form {
-    padding:30px;
-    margin-top:30px;
-    margin-left:20vw;
-}
-
-.fight_container form input {
-    margin-left: 32px;
-}
