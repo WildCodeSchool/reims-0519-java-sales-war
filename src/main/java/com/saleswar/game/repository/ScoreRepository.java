@@ -51,7 +51,7 @@ public class ScoreRepository {
         }
         catch (SQLException e) {
             throw new ResponseStatusException(
-                HttpStatus.INTERNAL_SERVER_ERROR, "", e
+                HttpStatus.INTERNAL_SERVER_ERROR, "Erreur sortie", e
             );
         }
     }

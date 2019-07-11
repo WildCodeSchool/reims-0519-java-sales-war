@@ -50,6 +50,18 @@ public class CharacterRepository {
             return damage;
     }
 
+    public static int bigMomaAttack() {
+        double probability = Math.random();
+        if (probability < 0.8) {
+            int damage = 30;
+            return damage;
+        } 
+        else {
+            int damage = 70;
+            return damage;
+        }
+    }
+
     public List<Character> getRankingCharacters() {
         try(
             Connection connection = DriverManager.getConnection(
