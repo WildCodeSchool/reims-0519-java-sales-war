@@ -9,16 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.saleswar.game.entities.Character;
-import com.saleswar.game.entities.Opponent;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 public class CharacterRepository {
 
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/baker_street_fighter?serverTimezone=GMT";
-    private final static String DB_USER = "baker";
-    private final static String DB_PASSWORD = "Fighter51!";
+    private final static String DB_URL = "jdbc:mysql://localhost:3306/sales_war?serverTimezone=GMT";
+    private final static String DB_USER = "cafy";
+    private final static String DB_PASSWORD = "Saleswar51!";
 
     private List<Character> characters;
 
@@ -58,7 +56,7 @@ public class CharacterRepository {
                 DB_URL, DB_USER, DB_PASSWORD
             );
             PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM fighter"
+                "SELECT * FROM ranking"
             );
         ) {
             try(

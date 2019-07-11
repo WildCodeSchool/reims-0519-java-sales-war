@@ -3,6 +3,7 @@ package com.saleswar.game.controllers;
 import javax.servlet.http.HttpSession;
 
 import com.saleswar.game.repository.CharacterRepository;
+import com.saleswar.game.repository.ScoreRepository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +45,7 @@ class GameController {
 
             session.setAttribute("currentPlayer", 1);
             session.setAttribute("currentOpponent", 3);
-        
+            
 
         model.addAttribute("message", "Get back fast your dress");
         if(session.getAttribute("lastAttackFailed") != null) {
@@ -63,12 +64,14 @@ class GameController {
     }
 
     @PostMapping("/game")
-    public String fight(HttpSession session, @RequestParam(required = false) String attack) {
+    public String fight(HttpSession session, @RequestParam(required = false) String attack, @RequestParam(required=false) String name, @RequestParam(required=false) String player2) {
+
+        session.setAttribute("player1", name);
+        session.setAttribute("player2", player2);
 
         boolean fight = true;
 
         if (attack != null) {
-
             int currentPlayer = 1;
             int currentOpponent = 3;
             if (!session.getAttribute("currentPlayer").equals(1)) {
@@ -84,7 +87,7 @@ class GameController {
             if (hit > 0) {
                 session.setAttribute("lastAttackFailed", false);
                 characterRepository.getFighterById(currentOpponent).takeHit(hit);
-                characterRepository.getFighterById(currentPlayer).takeHit(hit/2);
+                characterRepository.getFighterById(currentPlayer).takeHit(hit/3);
             } else {
                 session.setAttribute("lastAttackFailed", true);
             }
@@ -105,6 +108,7 @@ class GameController {
             return "redirect:/game";
         } 
         else { 
+            ScoreRepository.insert(name);
             return "redirect:/win";
         }
     }
