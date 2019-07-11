@@ -21,11 +21,20 @@ class GameController {
         return "index";
     }
 
+   
     @GetMapping("/rules")
     public String rules() {
         return "rules";
     }
 
+    @GetMapping("/win")
+    public String win() {
+        return "win";
+    }
+    @GetMapping("/loose")
+    public String loose() {
+        return "loose";
+    }
     @GetMapping("/scores")
     public String scores() {
         return "scores";
@@ -33,28 +42,22 @@ class GameController {
     @GetMapping("/game")
     public String fight(Model model, HttpSession session) {
 
-        if(session.getAttribute("currentPlayer") == null) {
-            double probability = Math.random();
-            if(probability > 0.5) {
-                session.setAttribute("currentPlayer", 1);
-            } 
-            else {
-                session.setAttribute("currentPlayer", 2);
-            }
-        }
+            session.setAttribute("currentPlayer", 1);
+            session.setAttribute("currentOpponent", 3);
+        
 
-        model.addAttribute("message", "Let the battle begin");
+        model.addAttribute("message", "Get back fast your dress");
         if(session.getAttribute("lastAttackFailed") != null) {
             if(session.getAttribute("lastAttackFailed").equals(false)) {
-                model.addAttribute("message", "The attack worked");
+                model.addAttribute("message", "Your attack hit the grandma, but she's older than you and beat your ass back ! ");
             }
             else {
                 model.addAttribute("message", "The attack failed");
             }
         }
-        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Sherlock" : "Moriarty");
+        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1" : "Grand Mère");
         model.addAttribute("lifeP1", characterRepository.getFighterById(1).getLife());
-        model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
+        model.addAttribute("lifeP2", characterRepository.getFighterById(3).getLife());
 
         return "game";
     }
@@ -66,7 +69,8 @@ class GameController {
 
         if (attack != null) {
 
-            int currentOpponent = 2;
+            int currentPlayer = 1;
+            int currentOpponent = 3;
             if (!session.getAttribute("currentPlayer").equals(1)) {
                 currentOpponent = 1;
             }
@@ -77,26 +81,31 @@ class GameController {
             } else {
                 hit = CharacterRepository.punch();
             }
-
             if (hit > 0) {
                 session.setAttribute("lastAttackFailed", false);
                 characterRepository.getFighterById(currentOpponent).takeHit(hit);
+                characterRepository.getFighterById(currentPlayer).takeHit(hit/2);
             } else {
                 session.setAttribute("lastAttackFailed", true);
             }
 
             if (characterRepository.getFighterById(currentOpponent).getLife() == 0) {
                 fight = false;
-            } else {
+            } 
+            if (characterRepository.getFighterById(currentPlayer).getLife() == 0) {
+                return "redirect:/loose";
+            }
+            else {
                 session.setAttribute("currentPlayer", currentOpponent);
             }
+            
         }
 
         if(fight) {
             return "redirect:/game";
         } 
         else { 
-            return "redirect:/index";
+            return "redirect:/win";
         }
     }
 

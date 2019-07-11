@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.saleswar.game.entities.Character;
+import com.saleswar.game.entities.Opponent;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,7 +25,8 @@ public class CharacterRepository {
     public CharacterRepository() {
         this.characters = new ArrayList<Character>();
         characters.add(new Character(1,"Joueur 1", 100));
-        characters.add(new Character(2, "Grand Mere",200));
+        characters.add(new Character(3 ,"Germaine", 250));
+
     }
     public Character getFighterById(int id) {
         for(Character character : characters) {
@@ -37,7 +39,7 @@ public class CharacterRepository {
 
     public static int uppercut() {
         double probability = Math.random();
-        int damage = 30;
+        int damage = 70;
         if (probability > 0.5) {
             return damage;
         } else {
@@ -46,13 +48,8 @@ public class CharacterRepository {
     }
 
     public static int punch() {
-        double probability = Math.random();
-        int damage = 10;
-        if (probability > 0.2) {
+        int damage = 30;
             return damage;
-        } else {
-            return 0;
-        }
     }
 
     public List<Character> getRankingCharacters() {
