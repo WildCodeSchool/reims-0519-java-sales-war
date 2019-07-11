@@ -23,8 +23,8 @@ public class CharacterRepository {
 
     public CharacterRepository() {
         this.characters = new ArrayList<Character>();
-        characters.add(new Character(1, "Sherlock Holmes",100));
-        characters.add(new Character(2, "Professeur Moriarty",100));
+        characters.add(new Character(1,"Joueur 1", 100));
+        characters.add(new Character(2, "Grand Mere",200));
     }
 
     public Character getFighterById(int id) {

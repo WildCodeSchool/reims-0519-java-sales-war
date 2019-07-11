@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 class GameController {
 
-    private static CharacterRepository fighterRepository = new CharacterRepository();
+    private static CharacterRepository characterRepository = new CharacterRepository();
 
     @GetMapping("/")
     public String index() {
@@ -53,40 +53,39 @@ class GameController {
             }
         }
         model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Sherlock" : "Moriarty");
-        model.addAttribute("lifeP1", fighterRepository.getFighterById(1).getLife());
-        model.addAttribute("lifeP2", fighterRepository.getFighterById(2).getLife());
+        model.addAttribute("lifeP1", characterRepository.getFighterById(1).getLife());
+        model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
 
-        return "fight";
+        return "game";
     }
 
-    @PostMapping("/fight")
+    @PostMapping("/game")
     public String fight(HttpSession session, @RequestParam(required = false) String attack) {
 
         boolean fight = true;
 
-        if(attack != null) { 
+        if (attack != null) {
 
             int currentOpponent = 2;
-            if(!session.getAttribute("currentPlayer").equals(1)) {
+            if (!session.getAttribute("currentPlayer").equals(1)) {
                 currentOpponent = 1;
             }
-            
+
             int hit = 0;
-            if(attack.equals("uppercut")) {
+            if (attack.equals("uppercut")) {
                 hit = CharacterRepository.uppercut();
-            }
-            else {
+            } else {
                 hit = CharacterRepository.punch();
             }
 
-            if(hit > 0) {
+            if (hit > 0) {
                 session.setAttribute("lastAttackFailed", false);
-                fighterRepository.getFighterById(currentOpponent).takeHit(hit);
+                characterRepository.getFighterById(currentOpponent).takeHit(hit);
             } else {
                 session.setAttribute("lastAttackFailed", true);
             }
 
-            if(fighterRepository.getFighterById(currentOpponent).getLife() == 0) {
+            if (characterRepository.getFighterById(currentOpponent).getLife() == 0) {
                 fight = false;
             } else {
                 session.setAttribute("currentPlayer", currentOpponent);
@@ -94,14 +93,14 @@ class GameController {
         }
 
         if(fight) {
-            return "redirect:/fight";
+            return "redirect:/game";
         } 
         else { 
-            return "redirect:/win";
+            return "redirect:/index";
         }
     }
 
-    @PostMapping("/game") 
+ /*   @PostMapping("/game") 
         public String game(HttpSession session, Model model, @RequestParam(required=false) String nickname1,@RequestParam(required=false) String nickname2, @RequestParam(required=false) String action) {
             if(session.getAttribute("nickname1") == null) {
                 // first time we get here : check nickname
@@ -118,5 +117,5 @@ class GameController {
         return "game";
         
     }
-
+*/
 }

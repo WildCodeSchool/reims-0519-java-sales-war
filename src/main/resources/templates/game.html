@@ -1,82 +1,73 @@
 <!doctype html>
 <html lang="en">
-    <head>
-    <!-- Required meta tags -->
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            
-    <!-- test fenetre modal -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/game.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="/js.js" type="text/javascript"></script>   
-    <!--Police google Nunito-->
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-    </style> 
-            
-            
-    <title>Sales war</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+    <title>Fight</title>
   </head>
 
-<body>    
+  <body>
+    <div class="fight_container">
 
-    <h2>Sales War</h2>
-    <article class="bandhead">
-        <div class="container d-flex h-100 align-items-center">
-            <div class="mx-auto text-center">
-                    <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                <p>Live commentary</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm">
-                                    <tr>
-                                <td>
-                                   <div class="w3-container">
-                                        <div class="w3-light-grey">
-                                        </div>
-                                        <br>
-                                        <button class="w3-button w3-green" onclick="decrement()">Click Me</button>
-                                    
-                                        </div>
-                                            <p th:text="${nickname1}"></p></td>
-                                        <br>
-                                        <td><p th:text="${nickname2}"></p></td>
-                                    </tr>
-                                </div>
-                          
-                            <div class="col-sm">
-                                <p>Action list</p>
-                                <form action="/game" method="post">
-                                <button value='15' class="btn btn-primary my-1" onclick="decrement()">Hand bag</button>
-                                <button value='40' class="btn btn-primary my-1" onclick="decrement()">Stiletto heel</button>
+      <h1>Fight</h1>
 
-                            </form>
-                            </div> 
-                            <div class="col-sm">
-                                    <progress value="100" max="100" id="a1">Life Point</progress>                                
-                                <p>Player Mamy</p>                                                                     
-                            </div>
-                           
-                    </div>
+      <header>
+        <nav class="main_menu">
+          <ul>
+            <li class="dashed_border bg_black_rgba">
+              <a href="/" class="green_yellow">HOME</a>
+            </li>
+            <li class="dashed_border bg_black_rgba">
+              <a href="/ranking" class="green_yellow">RANKING</a>
+            </li>
+            <li class="dashed_border bg_black_rgba">
+              <a href="/rules" class="green_yellow">RULES</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-       
-                    <!--button-->
-            
-                </form>
-            </div> 
+      <section class="fight">
+        <div class="card">
+          <img src="../IMG/sherlock.jpg" class="card-img-top" alt="Sherlock Holmes">
+          <div class="card-body">
+              <button type="button" class="btn btn-success">Sherlock</button>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP1}">100</strong> / 100</span></div>
+              </div>
+          </div>
         </div>
-    </article>
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <div class="description green_yellow dashed_border bg_black_rgba">
+            <p th:text="${message}">Let the battle begin</p>
+          <p><strong th:text="${currentPlayer}">player 1</strong> is playing now</p>
+        </div>
+
+        <div class="card">
+          <img src="../IMG/moriarty_profil.jpg" class="card-img-top" alt="Professeur Moriarty">
+          <div class="card-body">
+              <button type="button" class="btn btn-danger">Moriarty</button>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP2}">100</strong> / 100</span></div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <form action="/game" method="POST" class="dashed_border green_yellow bg_black_rgba">
+        <input type="radio" id="uppercut" name="attack" value="uppercut">
+        <label for="uppercut">Uppercut</label>  
+        <input type="radio" id="punch" name="attack" value="punch">
+        <label for="punch">Punch</label>
+        <input type="submit" value="Attack !">
+      </form>
+
+    </div>
+
   </body>
 </html>
