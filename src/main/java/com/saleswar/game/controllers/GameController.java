@@ -81,23 +81,35 @@ class GameController {
             int hit = 0;
             if (attack.equals("uppercut")) {
                 hit = CharacterRepository.uppercut();
-            } else {
+            }
+
+            else {
                 hit = CharacterRepository.punch();
             }
+
+            int hitBigMoma = 0;
+            hitBigMoma = characterRepository.bigMomaAttack();
+             
             if (hit > 0) {
                 session.setAttribute("lastAttackFailed", false);
                 characterRepository.getFighterById(currentOpponent).takeHit(hit);
-                characterRepository.getFighterById(currentPlayer).takeHit(hit/3);
-            } else {
+            }
+            if (hitBigMoma > 0) {
+                characterRepository.getFighterById(currentPlayer).takeHit(hitBigMoma);
+            }
+
+            else {
                 session.setAttribute("lastAttackFailed", true);
             }
 
             if (characterRepository.getFighterById(currentOpponent).getLife() == 0) {
                 fight = false;
-            } 
+            }
+
             if (characterRepository.getFighterById(currentPlayer).getLife() == 0) {
                 return "redirect:/loose";
             }
+            
             else {
                 session.setAttribute("currentPlayer", currentOpponent);
             }

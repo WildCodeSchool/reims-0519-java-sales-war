@@ -50,14 +50,14 @@ public class CharacterRepository {
             return damage;
     }
 
-    public static int bigMomaAttack() {
+    public int bigMomaAttack() {
         double probability = Math.random();
         if (probability < 0.8) {
-            int damage = 30;
+            int damage = 20;
             return damage;
         } 
         else {
-            int damage = 70;
+            int damage = 50;
             return damage;
         }
     }
@@ -94,7 +94,7 @@ public class CharacterRepository {
     }
 
     public static int insertScore() {
-        //todo faire linsert du score
+        //TODO : insèrer le score.
     return 0;
     }
 }
