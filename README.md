@@ -24,13 +24,13 @@ Si l’un des joueur arrive à 0 points de vie, le combat est perdu
 
 ## Créer la base de données du jeu
 
-- Se connecter à la base de données en **root**.
-- Créer la base de donnée **sales_war**.
+- Se connecter à la base de données en **"root"**.
+- Créer la base de donnée **"sales_war"**.
 - Sortir de la base de données et importer le fichier 
-**sales_war.sql**
-- Se connecter à la base de données nouvellement créer **sales_war**.
-- Créer un utilisateur **cafy**
-- Lui accorder les droits nécessaires pour la base de données **sales_war**.
+**"sales_war.sql"**
+- Se connecter à la base de données nouvellement créer **"sales_war"**.
+- Créer un utilisateur nommé **"cafy"**.
+- Lui accorder les droits nécessaires pour la base de données **"sales_war"**.
 
 ```
 mysql -u root -p 
