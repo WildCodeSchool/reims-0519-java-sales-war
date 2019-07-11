@@ -1,0 +1,39 @@
+p{
+    font-size: 25px;
+    opacity: 0.80;
+    color:white;
+}
+h2{
+    font-size: 40px;
+    margin-top: 20px;
+    text-align: center;
+    color:white;
+}
+.myBar{
+background-color:white;
+}
+body{
+    background: none;
+    
+}
+.container{
+    background-color:rgba(0, 0, 0, 0.6);
+}
+article{
+    background-image: url("img/soldes.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: -3px;
+    height: 600px;
+}
+html{
+    background-image: url("img/background.png");
+}
+.btn btn-primary my-1{
+    display: inline;
+
+}
+.btn{
+    background-color: coral;
+    color:black;
+}

@@ -101,4 +101,22 @@ class GameController {
         }
     }
 
+    @PostMapping("/game") 
+        public String game(HttpSession session, Model model, @RequestParam(required=false) String nickname1,@RequestParam(required=false) String nickname2, @RequestParam(required=false) String action) {
+            if(session.getAttribute("nickname1") == null) {
+                // first time we get here : check nickname
+                if(nickname1 == null || nickname1.equals("")) {
+                    // invalid nickname : go back to home page
+                    return "redirect:/";
+                }
+                // register nickname in the session
+                session.setAttribute("nickname1", nickname1);
+                session.setAttribute("nickname2", nickname2);
+                model.addAttribute("nickname1", nickname1);
+                model.addAttribute("nickname2", nickname2);
+            }
+        return "game";
+        
+    }
+
 }

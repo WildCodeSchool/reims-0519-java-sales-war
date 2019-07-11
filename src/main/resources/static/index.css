@@ -1,0 +1,30 @@
+p{
+    font-size: 25px;
+    background-color: ghostwhite;
+    opacity: 0.80;
+}
+h2{
+    font-size: 40px;
+    margin-top: 20px;
+    text-align: center;
+    color:white;
+    
+
+}
+body{
+    background: none;
+    
+}
+article{
+    background-image: url("img/soldes.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: -3px;
+    height: 600px;
+}
+html{
+    background-image: url("img/background.png");
+}
+.btn btn-primary my-1{
+    display: inline;
+}
