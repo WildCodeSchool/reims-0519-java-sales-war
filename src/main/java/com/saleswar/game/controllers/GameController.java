@@ -44,6 +44,7 @@ class GameController {
     public String fight(Model model, HttpSession session) {
 
             session.setAttribute("currentPlayer", 1);
+            session.setAttribute("currentPlayer", 2);
             session.setAttribute("currentOpponent", 3);
             
 
@@ -56,9 +57,10 @@ class GameController {
                 model.addAttribute("message", "The attack failed");
             }
         }
-        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1" : "Grand Mère");
+        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1 & Player 2" : "Germaine la folle furieuse");
         model.addAttribute("lifeP1", characterRepository.getFighterById(1).getLife());
-        model.addAttribute("lifeP2", characterRepository.getFighterById(3).getLife());
+        model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
+        model.addAttribute("lifeP3", characterRepository.getFighterById(3).getLife());
 
         return "game";
     }
@@ -72,10 +74,15 @@ class GameController {
         boolean fight = true;
 
         if (attack != null) {
-            int currentPlayer = 1;
-            int currentOpponent = 3;
-            if (!session.getAttribute("currentPlayer").equals(1)) {
-                currentOpponent = 1;
+            int targetId = 1;
+            int bigMomaId = 3;
+
+            double probability = Math.random();
+            if (probability < 0.5) {
+                targetId = 2;
+            }
+            else {
+                targetId = 1;
             }
 
             int hit = 0;
@@ -89,29 +96,29 @@ class GameController {
 
             int hitBigMoma = 0;
             hitBigMoma = characterRepository.bigMomaAttack();
-             
+            
             if (hit > 0) {
                 session.setAttribute("lastAttackFailed", false);
-                characterRepository.getFighterById(currentOpponent).takeHit(hit);
+                characterRepository.getFighterById(bigMomaId).takeHit(hit);
             }
             if (hitBigMoma > 0) {
-                characterRepository.getFighterById(currentPlayer).takeHit(hitBigMoma);
+                characterRepository.getFighterById(targetId).takeHit(hitBigMoma);
             }
 
             else {
                 session.setAttribute("lastAttackFailed", true);
             }
 
-            if (characterRepository.getFighterById(currentOpponent).getLife() == 0) {
+            if (characterRepository.getFighterById(bigMomaId).getLife() == 0) {
                 fight = false;
             }
 
-            if (characterRepository.getFighterById(currentPlayer).getLife() == 0) {
+            if (characterRepository.getFighterById(targetId).getLife() == 0) {
                 return "redirect:/loose";
             }
             
             else {
-                session.setAttribute("currentPlayer", currentOpponent);
+                session.setAttribute("currentPlayer", bigMomaId);
             }
             
         }

@@ -11,7 +11,7 @@ h1 {
 
 body {
     font-family: "Retro computer", serif;
-    background-image: url("../static/img/coin-magasin.jpg");
+    background-image: url("../img/coin-magasin.jpg");
     background-repeat: no-repeat;
     background-size:100%;
 }
@@ -87,7 +87,7 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: justify;
-    background-image: url(../IMG/rules_bg.jpg);
+    background-image: url(../rules_bg.jpg);
     background-size: cover;
 }
 
@@ -109,7 +109,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    background-image: url(../IMG/figth_bg.jpg);
+    background-image: url(../figth_bg.jpg);
     background-size: cover;
    
 }
@@ -149,7 +149,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(../IMG/home_bg.jpg);
+    background-image: url(../home_bg.jpg);
     background-size: cover;
     color:white;
 }

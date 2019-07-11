@@ -22,8 +22,9 @@ public class CharacterRepository {
 
     public CharacterRepository() {
         this.characters = new ArrayList<Character>();
-        characters.add(new Character(1,"Joueur 1", 100));
-        characters.add(new Character(3 ,"Germaine", 250));
+        characters.add(new Character(1, "Stéphanie", 150));
+        characters.add(new Character(2, "Cecile", 150));
+        characters.add(new Character(3 ,"Germaine", 300));
 
     }
     public Character getFighterById(int id) {
@@ -34,7 +35,7 @@ public class CharacterRepository {
         }
         return null;
     }
-
+//highheels
     public static int uppercut() {
         double probability = Math.random();
         int damage = 70;
@@ -44,7 +45,7 @@ public class CharacterRepository {
             return 0;
         }
     }
-
+// handbag
     public static int punch() {
         int damage = 30;
             return damage;
