@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
+    <script src="/js.js" type="text/javascript"></script>   
     <!--Police google Nunito-->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
@@ -38,15 +38,31 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm">
-                                <p>Player 1 + Player 2</p>
+                                    <tr>
+                                <td>
+                                   <div class="w3-container">
+                                        <div class="w3-light-grey">
+                                        </div>
+                                        <br>
+                                        <button class="w3-button w3-green" onclick="decrement()">Click Me</button>
+                                    
+                                        </div>
+                                            <p th:text="${nickname1}"></p></td>
+                                        <br>
+                                        <td><p th:text="${nickname2}"></p></td>
+                                    </tr>
                                 </div>
                           
                             <div class="col-sm">
                                 <p>Action list</p>
-                                <button class="btn btn-primary my-1">Hand bag</button>
-                                <button class="btn btn-primary my-1">Stiletto heel</button>
+                                <form action="/game" method="post">
+                                <button value='15' class="btn btn-primary my-1" onclick="decrement()">Hand bag</button>
+                                <button value='40' class="btn btn-primary my-1" onclick="decrement()">Stiletto heel</button>
+
+                            </form>
                             </div> 
                             <div class="col-sm">
+                                    <progress value="100" max="100" id="a1">Life Point</progress>                                
                                 <p>Player Mamy</p>                                                                     
                             </div>
                            
