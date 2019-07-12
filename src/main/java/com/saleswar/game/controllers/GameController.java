@@ -17,6 +17,11 @@ class GameController {
 
     private static CharacterRepository characterRepository = new CharacterRepository();
 
+    @GetMapping("/arena")
+    public String audio(){
+        return "arena.mp3";
+    }
+
     @GetMapping("/")
     public String index() {
         return "index";
@@ -66,6 +71,7 @@ class GameController {
 
         return "game";
     }
+  
 
     @PostMapping("/game")
     public String fight(HttpSession session, Model model, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
