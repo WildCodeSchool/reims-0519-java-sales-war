@@ -26,12 +26,7 @@ body {
 }
 
 .bg_black_rgba {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.8);
-    font-size: 30px;
 }
 
 /* -------- MAIN MENU -------- */
@@ -116,9 +111,12 @@ body {
     flex-direction: column;
     background-image: url(../figth_bg.jpg);
     background-size: cover;
-   
+  
 }
-
+div{
+    display: inline-block;
+    height: 10px;
+}
 .fight {
     width: 100%;
     display:grid;
@@ -218,21 +216,46 @@ body {
 
 
 /* -------- FIGHT FORM -------- */
+img.bott{ 
+    transform-origin:50% 50%;
+    animation:1s rotateRight infinite linear;
 
+}
+img.right{ 
+    transform-origin:50% 50%;
+    animation:1s rotateLeft infinite linear;
 
-/* -------- LOOSE PAGE -------- */
-.div-loose {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: solid, black;
-    display: inline-block;
-    margin: 0 30% 0 30%;
+}
+img.upp{ 
+    transform-origin:50% 50%;
+    animation:1s rotateUp infinite linear;
+
+}
+img.left{ 
+    transform-origin:50% 50%;
+    animation:1s rotateBott infinite linear;
+
+}
+img.rotate{ 
+    transform-origin:50% 50%;
+    animation:1s rotateBott infinite linear;
 
 }
 
-.pageinline{
+@keyframes rotateRight{
+    100%{ transform:rotate(360deg); }
 
-    display: grid;
-    width: 100%;
-    grid-template-columns: 25vw auto 25vw;
-    grid-template-rows: repeat(1, auto);
+}
+@keyframes rotateLeft{
+    
+    from{ transform: rotate(360) + translateX(0)}
+    to{transform: translateX(400px)}
+
+}
+
+@keyframes rotateBott{
+    100%{ transform:rotate(360deg); }
+    from{ transform: translateY(0)}
+    to{transform: translateY(400px)}
+
 }

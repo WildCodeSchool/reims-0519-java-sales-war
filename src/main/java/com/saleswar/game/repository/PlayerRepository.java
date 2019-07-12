@@ -10,25 +10,17 @@ public class PlayerRepository {
     private List<Player> players;
 
     public PlayerRepository() {
-
         this.players = new ArrayList<Player>();
-
-        players.add(new Player(1, "fufu"));
-       
+        players.add(new Player(1, "name"));
     }
 
     public List<Player> getPlayer() {
-
         return players;
     }
 
-    
     public Player getPlayerById(int id) {
-
         for(Player player : players) {
-
             if(player.getId() == id) {
-
                 return player;
             }
         }

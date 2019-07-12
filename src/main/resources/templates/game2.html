@@ -32,8 +32,8 @@
         </nav>
       </header>
 
-      <main class="fight p-3">
-        <form id="attackForm" class="card-group" action="/game" method="POST">
+      <main class="pageinline">
+        <form id="attackForm" class="card-group" action="/game2" method="POST">
           <section class="card">
             <img src="../img/girl1.jpg" class="card-img-top" alt="girl 1">
             <div class="card-body p-3">
@@ -50,7 +50,19 @@
                   <label for="punch1">highheels</label>
                 </div>
             </div>
+            <button form="attackForm" class="attack-btn btn btn-primary mt-3" type="submit">Attack !</button>
           </section>
+          
+        </form>
+        
+
+        <div class="description green_yellow bg_black_rgba">
+            <p th:text="${message}">Let the battle begins </p>
+          <p><strong th:text="${currentPlayer}">player 1</strong> is playing now</p>
+        </div>
+        
+        <form id="attackForm" class="card-group" action="/game2" method="POST">
+        <aside class="card-group">
           <section class="card">
             <img src="../img/girl2.jpg" class="card-img-top" alt="girl 2">
             <div class="card-body p-3">
@@ -67,29 +79,12 @@
                   <label for="punch2">highheels</label>
                 </div>
             </div>
-          </section>
-        </form>
-        <button form="attackForm" class="attack-btn btn btn-primary mt-3" type="submit">Attack !</button>
-
-        <div class="description green_yellow bg_black_rgba">
-            <p th:text="${message}">Let the battle begin</p>
-          <p><strong th:text="${currentPlayer}">player 1</strong> is playing now</p>
-        </div>
-
-        <aside class="card-group">
-          <section class="card">
-            <img src="../img/mamiefight.jpg" class="card-img-top" alt="grandma">
-            <div class="card-body">
-                <p class="card-title text-center">Grand Mère</p>
-                <div class="progress">
-                <div class="progress-bar" role="progressbar" th:text="|${lifeP3} / 300|" th:style="|width: ${lifeP3}%;|" style="width: 50%;" th:aria-valuenow="${lifeP3}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="300">50%</div>
-                </div>
-            </div>
+              <button form="attackForm" class="attack-btn btn btn-primary mt-3" type="submit">Attack !</button>
           </section>
         </aside>
-      </main>
-
+        </form>
+        
+    </main>
     </div>
-
   </body>
 </html>

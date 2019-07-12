@@ -9,22 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.saleswar.game.entities.Character;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 public class CharacterRepository {
 
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/baker_street_fighter?serverTimezone=GMT";
-    private final static String DB_USER = "baker";
-    private final static String DB_PASSWORD = "Fighter51!";
+    private final static String DB_URL = "jdbc:mysql://localhost:3306/sales_war?serverTimezone=GMT";
+    private final static String DB_USER = "cafy";
+    private final static String DB_PASSWORD = "Saleswar51!";
 
     private List<Character> characters;
 
     public CharacterRepository() {
         this.characters = new ArrayList<Character>();
-        characters.add(new Character(1,"Joueur 1", 100));
-        characters.add(new Character(2, "Grand Mere",200));
+        characters.add(new Character(1, "Stéphanie", 150));
+        characters.add(new Character(2, "Cecile", 150));
+        characters.add(new Character(3 ,"Germaine", 300));
+
     }
     public Character getFighterById(int id) {
         for(Character character : characters) {
@@ -34,24 +35,31 @@ public class CharacterRepository {
         }
         return null;
     }
-
+    //highheels
     public static int uppercut() {
         double probability = Math.random();
-        int damage = 30;
+        int damage = 70;
         if (probability > 0.5) {
             return damage;
         } else {
             return 0;
         }
     }
-
+    //handbag
     public static int punch() {
-        double probability = Math.random();
-        int damage = 10;
-        if (probability > 0.2) {
+        int damage = 30;
             return damage;
-        } else {
-            return 0;
+    }
+
+    public int bigMomaAttack() {
+        double probability = Math.random();
+        if (probability < 0.8) {
+            int damage = 20;
+            return damage;
+        } 
+        else {
+            int damage = 50;
+            return damage;
         }
     }
 
@@ -61,7 +69,7 @@ public class CharacterRepository {
                 DB_URL, DB_USER, DB_PASSWORD
             );
             PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM fighter"
+                "SELECT * FROM ranking"
             );
         ) {
             try(
@@ -87,7 +95,7 @@ public class CharacterRepository {
     }
 
     public static int insertScore() {
-        //todo faire linsert du score
+        //insèrer le score.
     return 0;
     }
 }

@@ -6,7 +6,7 @@ public class Character extends Player {
 
     public Character(int id, String name,int life) {
         super(id, name);
-        this.life = 100;
+        this.life = life;
     }
 
     public int getLife() {
