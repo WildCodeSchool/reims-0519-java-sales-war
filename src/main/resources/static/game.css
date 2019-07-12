@@ -26,7 +26,12 @@ body {
 }
 
 .bg_black_rgba {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.8);
+    font-size: 30px;
 }
 
 /* -------- MAIN MENU -------- */
@@ -232,4 +237,12 @@ body {
     display: inline-block;
     margin: 0 30% 0 30%;
 
+}
+
+.pageinline{
+
+    display: grid;
+    width: 100%;
+    grid-template-columns: 25vw auto 25vw;
+    grid-template-rows: repeat(1, auto);
 }

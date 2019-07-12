@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../img/game.css">
+    <link rel="stylesheet" href="../game.css">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 
     <title>Fight</title>
   </head>
@@ -13,7 +14,7 @@
   <body>
     <div class="fight_container">
 
-      <h1>Fight 2</h1>
+      <h1>SALES WAR</h1>
 
       <header>
         <nav class="main_menu">
@@ -22,51 +23,68 @@
               <a href="/" class="green_yellow">HOME</a>
             </li>
             <li class="dashed_border bg_black_rgba">
-              <a href="/ranking" class="green_yellow">RANKING</a>
+              <a href="/ranking" class="green_yellow">ACTIONS</a>
             </li>
-            <li class="dashed_border bg_black_rgba">
+            <!--<li class="dashed_border bg_black_rgba">
               <a href="/rules" class="green_yellow">RULES</a>
-            </li>
+            </li>-->
           </ul>
         </nav>
       </header>
 
-      <section class="fight">
-        <div class="card">
-          <img src="../IMG/sherlock.jpg" class="card-img-top" alt="Player 1">
-          <div class="card-body">
-              <button type="button" class="btn btn-success" th:text="${nickname1}">Player 1</button>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP1}">150</strong> / 150</span></div>
-              </div>
-          </div>
-        </div>
+      <main class="pageinline">
+        <form id="attackForm" class="card-group" action="/game2" method="POST">
+          <section class="card">
+            <img src="../img/girl1.jpg" class="card-img-top" alt="girl 1">
+            <div class="card-body p-3">
+                <p class="card-title text-center" th:text="${nickname1}">Player 1</p>
+                <div class="progress mb-3">
+                  <div class="progress-bar" role="progressbar" th:text="|${lifeP1} / 150|" th:style="|width: ${lifeP1}%;|" style="width: 50%;" th:aria-valuenow="${lifeP1}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="punch" name="attack" value="punch">
+                  <label for="uppercut1">handbag</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="uppercut" name="attack" value="uppercut">
+                  <label for="punch1">highheels</label>
+                </div>
+            </div>
+            <button form="attackForm" class="attack-btn btn btn-primary mt-3" type="submit">Attack !</button>
+          </section>
+          
+        </form>
+        
 
-        <div class="description green_yellow dashed_border bg_black_rgba">
-            <p th:text="${message}">Let the battle begin</p>
+        <div class="description green_yellow bg_black_rgba">
+            <p th:text="${message}">Let the battle begins </p>
           <p><strong th:text="${currentPlayer}">player 1</strong> is playing now</p>
         </div>
-
-        <div class="card">
-          <img src="../IMG/moriarty_profil.jpg" class="card-img-top" alt="Player 2">
-          <div class="card-body">
-              <button type="button" class="btn btn-danger" th:text="${nickname2}">Player 2</button>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP2}">150</strong> / 150</span></div>
-              </div>
-          </div>
-        </div>
-      </section>
-
-      <form action="/game2" method="POST" class="dashed_border green_yellow bg_black_rgba">
-        <input type="radio" id="uppercut" name="attack" value="uppercut">
-        <label for="uppercut">Highheels</label>  
-        <input type="radio" id="punch" name="attack" value="punch">
-        <label for="punch">Handbag</label>
-        <input type="submit" value="Attack !">
-      </form>
-
+        
+        <form id="attackForm" class="card-group" action="/game2" method="POST">
+        <aside class="card-group">
+          <section class="card">
+            <img src="../img/girl2.jpg" class="card-img-top" alt="girl 2">
+            <div class="card-body p-3">
+                <p class="card-title text-center mb-3" th:text="${nickname2}">Player 2</p>
+                <div class="progress mb-3">
+                  <div class="progress-bar" role="progressbar" th:text="|${lifeP2} / 150|" th:style="|width: ${lifeP2}%;|" style="width: 50%;" th:aria-valuenow="${lifeP2}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="punch" name="attack" value="punch">
+                  <label for="uppercut2">handbag</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="uppercut" name="attack" value="uppercut">
+                  <label for="punch2">highheels</label>
+                </div>
+            </div>
+              <button form="attackForm" class="attack-btn btn btn-primary mt-3" type="submit">Attack !</button>
+          </section>
+        </aside>
+        </form>
+        
+    </main>
     </div>
-
   </body>
 </html>

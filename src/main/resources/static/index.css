@@ -3,17 +3,21 @@ p{
     background-color: ghostwhite;
     opacity: 0.80;
 }
-h2{
-    font-size: 40px;
-    margin-top: 20px;
+h2 {
+    margin: auto;
+    font-size:100pt;
+    font-family: 'IM Fell English SC', serif;
+    color:rgb(190, 7, 7);
+    text-shadow: 5px 5px white;
     text-align: center;
-    color:white;
-    
-
 }
 body{
     background: none;
     
+}
+h4{
+    text-align: center;
+    color: white;
 }
 article{
     background-image: url("img/soldes.jpg");
@@ -23,7 +27,8 @@ article{
     height: 600px;
 }
 html{
-    background-image: url("img/background.png");
+    
+    background-color: black;
 }
 .btn btn-primary my-1{
     display: inline;
