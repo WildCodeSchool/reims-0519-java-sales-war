@@ -227,7 +227,10 @@ class GameController {
         if(fight) {
             return "redirect:/game2";
         } 
-        else { 
+        else {
+
+            //model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").getLife(0) ? session.getAttribute("nickname1") :  session.getAttribute("nickname2");
+
             return "redirect:/win";
         }
     }
