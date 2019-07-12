@@ -56,6 +56,12 @@ class GameController {
     public String loose() {
         return "loose";
     }
+
+    @GetMapping("/next")
+    public String nextStage() {
+        return "next";
+    }
+
     @GetMapping("/scores")
     public String scores() {
         return "scores";
@@ -157,7 +163,7 @@ class GameController {
         else {
             characterRepository.getFighterById(1).setLife(150);
             characterRepository.getFighterById(2).setLife(150);
-            return "redirect:/game2";
+            return "redirect:/next";
         }
     }
 
