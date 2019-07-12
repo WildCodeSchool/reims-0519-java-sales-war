@@ -1,6 +1,7 @@
 package com.saleswar.game.repository;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,17 +17,21 @@ public class ScoreRepository {
     private final static String DB_USER = "cafy";
     private final static String DB_PASSWORD = "Saleswar51!";
 
-    public static int insert(String winner) {
+    public static int insert(
+        String winner,
+        String looser
+    ) {
         try(
             Connection connection = DriverManager.getConnection(
                 DB_URL, DB_USER, DB_PASSWORD
             );
             PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO ranking (winner) VALUES (?)",
+                "INSERT INTO ranking (winner,looser) VALUES (?,?)",
                 Statement.RETURN_GENERATED_KEYS
             );
         ) {
             statement.setString(1, winner);
+            statement.setString(2, looser);
     
             if(statement.executeUpdate() != 1) {
                 throw new ResponseStatusException(
@@ -53,4 +58,7 @@ public class ScoreRepository {
             );
         }
     }
+
+	public static void insert(Object pseudo, Object pseudo2) {
+	}
 }

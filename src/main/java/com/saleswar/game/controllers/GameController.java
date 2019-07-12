@@ -1,9 +1,12 @@
 package com.saleswar.game.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import com.saleswar.game.repository.CharacterRepository;
 //import com.saleswar.game.repository.ScoreRepository;
+import com.saleswar.game.repository.ScoreRepository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 class GameController {
 
     private static CharacterRepository characterRepository = new CharacterRepository();
+
+    @GetMapping("/arena")
+    public String audio(){
+        return "arena.mp3";
+    }
 
     @GetMapping("/")
     public String index() {
@@ -48,6 +56,12 @@ class GameController {
     public String loose() {
         return "loose";
     }
+
+    @GetMapping("/next")
+    public String nextStage() {
+        return "next";
+    }
+
     @GetMapping("/scores")
     public String scores() {
         return "scores";
@@ -79,6 +93,7 @@ class GameController {
 
         return "game";
     }
+  
 
     @PostMapping("/game")
     public String game(HttpSession session, Model model, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
@@ -148,7 +163,7 @@ class GameController {
         else {
             characterRepository.getFighterById(1).setLife(150);
             characterRepository.getFighterById(2).setLife(150);
-            return "redirect:/game2";
+            return "redirect:/next";
         }
     }
 
@@ -186,11 +201,11 @@ class GameController {
 
     @PostMapping("/game2")
     public String game2(HttpSession session, @RequestParam(required = false) String attack) {
-
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy | hh:mm a"); 
         boolean fight = true;
 
         if(attack != null) { 
-
+          
             int currentOpponent = 2;
             if(!session.getAttribute("currentPlayer").equals(1)) {
                 currentOpponent = 1;
@@ -198,10 +213,10 @@ class GameController {
             
             int hit = 0;
             if(attack.equals("uppercut")) {
-                hit = CharacterRepository.uppercut();
+                hit = CharacterRepository.uppercut()/2;
             }
             else {
-                hit = CharacterRepository.punch();
+                hit = CharacterRepository.punch()/2;
             }
 
             if(hit > 0) {
@@ -222,6 +237,10 @@ class GameController {
             return "redirect:/game2";
         } 
         else { 
+            Object pseudo = session.getAttribute("nickname1");
+            Object pseudo2 = session.getAttribute("nickname2");
+            //ScoreRepository.insert((String) pseudo, (String)pseudo2);
+            System.out.println((String)pseudo+"  -  "+(String)pseudo2);
             return "redirect:/win";
         }
     }

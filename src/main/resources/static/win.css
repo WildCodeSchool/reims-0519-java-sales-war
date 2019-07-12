@@ -116,6 +116,7 @@ body {
 div{
     display: inline-block;
     height: 10px;
+    margin: 0 20% 0 20%;
 }
 .fight {
     width: 100%;
@@ -219,22 +220,23 @@ div{
 img.bott{ 
     transform-origin:50% 50%;
     animation:1s rotateRight infinite linear;
-
+    animation-direction: alternate-reverse;
 }
 img.right{ 
     transform-origin:50% 50%;
     animation:1s rotateLeft infinite linear;
+    animation-direction: alternate-reverse;
 
 }
 img.upp{ 
     transform-origin:50% 50%;
     animation:1s rotateUp infinite linear;
-
+    -webkit-animation:bounce_ball 2s linear infinite;
 }
 img.left{ 
     transform-origin:50% 50%;
     animation:1s rotateBott infinite linear;
-
+    animation-direction: alternate-reverse;
 }
 img.rotate{ 
     transform-origin:50% 50%;
@@ -243,19 +245,31 @@ img.rotate{
 }
 
 @keyframes rotateRight{
+    100%{ transform:rotate(720deg); }
+
+}
+@keyframes rotateRight{
     100%{ transform:rotate(360deg); }
 
 }
 @keyframes rotateLeft{
     
     from{ transform: rotate(360) + translateX(0)}
-    to{transform: translateX(400px)}
+    to{transform: translateX(1000px)}
 
 }
 
 @keyframes rotateBott{
-    100%{ transform:rotate(360deg); }
-    from{ transform: translateY(0)}
-    to{transform: translateY(400px)}
 
+    from{ transform: translateX(0)}
+    to{transform: translateX(-1000px)}
+
+}
+@-webkit-keyframes bounce_ball{
+  0% {margin-top:30px;}
+  25%{margin-left:250px;margin-top:252px}
+  50%{margin-left:490px;margin-top:30px;}
+  75%{margin-left:250px;margin-top:252px}
+  100%{margin-left:0px;margin-top:30px}
+  
 }
