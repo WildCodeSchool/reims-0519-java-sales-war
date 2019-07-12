@@ -1,0 +1,261 @@
+
+
+h1 {
+    margin: auto;
+    font-size:100pt;
+    font-family: 'IM Fell English SC', serif;
+    color:rgb(190, 7, 7);
+    text-shadow: 5px 5px rgb(14, 13, 13);
+    
+}
+
+body {
+    font-family: "Retro computer", serif;
+    background-image: url("../img/coin-magasin.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+}
+.card{
+    background-color: burlywood;
+    margin: 3px;
+}
+
+
+.green_yellow {
+    color: burlywood;
+}
+
+.bg_black_rgba {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* -------- MAIN MENU -------- */
+
+.main_menu {
+    width: 90vw;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+}
+
+.main_menu ul {
+    list-style-type: none;
+    width: 100%;
+    
+    
+
+}
+
+.main_menu ul li {
+    margin: 40px 0 40px 0;
+    cursor: pointer;
+    height:50px;
+    display: inline-block;
+}
+
+.main_menu ul li a {
+    text-decoration: none;
+    height:100%;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:16pt;
+}
+
+.main_menu ul li:nth-child(2) a {
+    animation: colorblink 0.5s infinite;
+    font-size: 20pt;
+}
+
+.main_menu ul li:hover {
+    background-color: white;
+}
+
+.main_menu ul li:hover a {
+    color: black;
+}
+
+/* -------- RULES PAGE -------- */
+
+.rules_container {
+    height:100vh;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: justify;
+    background-image: url(../rules_bg.jpg);
+    background-size: cover;
+}
+
+.rules_container .rules {
+    padding: 40px;
+    margin-left:20vw;
+    width:60%;
+}
+
+.rules_container .rules span {
+    color:white;
+    font-size:15pt;
+}
+
+/* -------- FIGHT PAGE -------- */
+
+.fight_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(../figth_bg.jpg);
+    background-size: cover;
+  
+}
+div{
+    display: inline-block;
+    height: 10px;
+}
+.fight {
+    width: 100%;
+    display:grid;
+    grid-template-columns: 25% auto 25%;
+    grid-template-rows: repeat(2, auto);
+}
+
+.fight .attack-btn {
+    grid-row-start: 2;
+}
+
+.fight .description {
+    height:100%;
+    margin:auto 20px auto 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.fight .description strong {
+    color:white;
+}
+
+/* -------- HOME PAGE -------- */
+
+.home_container {
+    height:100vh;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(../home_bg.jpg);
+    background-size: cover;
+    color:white;
+}
+
+.home_container .home_title {
+    margin: auto auto auto;
+}
+
+.home_container p {
+    padding: 10px;
+}
+
+/* -------- HOME MENU -------- */
+
+.home_container .home_menu {
+    width: 30vw;
+    padding:30px;
+    margin-bottom: 40px;
+    text-align:center;
+}
+
+.home_container .home_menu ul {
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+.home_container .home_menu ul li {
+    margin: 10px 0 10px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    height:100px;
+}
+
+.home_container .home_menu ul li a {
+    text-decoration: none;
+    font-size:16pt;
+    height:100%;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.home_container .home_menu ul li:nth-child(2) a {
+    animation: colorblink 0.5s infinite;
+    font-size: 20pt;
+}
+
+@keyframes colorblink { 
+  0% { }
+  50% { color:red; } 
+}
+
+.home_container .home_menu ul li:hover {
+    background-color: white;
+}
+
+.home_container .home_menu ul li:hover a {
+    color: black;
+}
+
+
+/* -------- FIGHT FORM -------- */
+img.bott{ 
+    transform-origin:50% 50%;
+    animation:1s rotateRight infinite linear;
+
+}
+img.right{ 
+    transform-origin:50% 50%;
+    animation:1s rotateLeft infinite linear;
+
+}
+img.upp{ 
+    transform-origin:50% 50%;
+    animation:1s rotateUp infinite linear;
+
+}
+img.left{ 
+    transform-origin:50% 50%;
+    animation:1s rotateBott infinite linear;
+
+}
+img.rotate{ 
+    transform-origin:50% 50%;
+    animation:1s rotateBott infinite linear;
+
+}
+
+@keyframes rotateRight{
+    100%{ transform:rotate(360deg); }
+
+}
+@keyframes rotateLeft{
+    
+    from{ transform: rotate(360) + translateX(0)}
+    to{transform: translateX(400px)}
+
+}
+
+@keyframes rotateBott{
+    100%{ transform:rotate(360deg); }
+    from{ transform: translateY(0)}
+    to{transform: translateY(400px)}
+
+}
