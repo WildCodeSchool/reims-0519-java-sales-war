@@ -70,8 +70,12 @@ class GameController {
     @PostMapping("/game")
     public String fight(HttpSession session, Model model, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
 
-        session.setAttribute("nickname1", nickname1);
+        if (session.getAttribute("nickname1") == null) {
+            session.setAttribute("nickname1", nickname1);
+        }
+        if (session.getAttribute("nickname2") == null) {
         session.setAttribute("nickname2", nickname2);
+        }
 
         boolean fight = true;
 

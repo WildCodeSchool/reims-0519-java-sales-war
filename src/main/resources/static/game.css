@@ -213,3 +213,13 @@ body {
 
 
 /* -------- FIGHT FORM -------- */
+
+
+/* -------- LOOSE PAGE -------- */
+.div-loose {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: solid, black;
+    display: inline-block;
+    margin: 0 30% 0 30%;
+
+}
