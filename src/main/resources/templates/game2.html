@@ -35,9 +35,9 @@
         <div class="card">
           <img src="../IMG/sherlock.jpg" class="card-img-top" alt="Player 1">
           <div class="card-body">
-              <button type="button" class="btn btn-success">Player 2</button>
+              <button type="button" class="btn btn-success" th:text="${nickname1}">Player 1</button>
               <div class="progress">
-                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP1}">100</strong> / 150</span></div>
+                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP1}">150</strong> / 150</span></div>
               </div>
           </div>
         </div>
@@ -50,9 +50,9 @@
         <div class="card">
           <img src="../IMG/moriarty_profil.jpg" class="card-img-top" alt="Player 2">
           <div class="card-body">
-              <button type="button" class="btn btn-danger">Player 2</button>
+              <button type="button" class="btn btn-danger" th:text="${nickname2}">Player 2</button>
               <div class="progress">
-                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP2}">100</strong> / 150</span></div>
+                <div class="progress-bar" role="progressbar"><span><strong th:text="${lifeP2}">150</strong> / 150</span></div>
               </div>
           </div>
         </div>

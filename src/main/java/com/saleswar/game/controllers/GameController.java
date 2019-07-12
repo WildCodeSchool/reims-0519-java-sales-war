@@ -19,6 +19,8 @@ class GameController {
 
     @GetMapping("/")
     public String index() {
+        //session.setAttribute("nickname1", null);
+        //session.setAttribute("nickname2", null);
         if(characterRepository.getFighterById(1).getLife() < 150 || characterRepository.getFighterById(2).getLife() < 150 || characterRepository.getFighterById(3).getLife() < 300) {
             characterRepository.getFighterById(1).setLife(150);
             characterRepository.getFighterById(2).setLife(150);
@@ -33,7 +35,13 @@ class GameController {
     }
 
     @GetMapping("/win")
-    public String win() {
+    public String win(Model model) {
+        if (characterRepository.getFighterById(1).getLife() == 0) {
+            model.addAttribute("nickname1", "nickname1");
+        }
+        else {
+            model.addAttribute("nickname2", "nickname2");
+        }
         return "win";
     }
     @GetMapping("/loose")
@@ -61,7 +69,7 @@ class GameController {
                 model.addAttribute("message", "The attack failed");
             }
         }
-        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1 & Player 2" : "Germaine, the mad grandmother");
+        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Germaine, the mad grandmother" : session.getAttribute("nickname1") +" & "+ session.getAttribute("nickname2"));
         model.addAttribute("lifeP1", characterRepository.getFighterById(1).getLife());
         model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
         model.addAttribute("lifeP3", characterRepository.getFighterById(3).getLife());
@@ -74,12 +82,6 @@ class GameController {
 
     @PostMapping("/game")
     public String game(HttpSession session, Model model, @RequestParam(required = false) String attack, @RequestParam(required=false) String nickname1, @RequestParam(required=false) String nickname2) {
-
-        if(session.getAttribute("nickname1") == null || session.getAttribute("nickname2") == null) {
-            if((nickname1 == null || nickname2 == null) || (nickname1.equals(" ")) || nickname2.equals(" ")) {
-            return "redirect:/";
-            }
-        }
 
         if (session.getAttribute("nickname1") == null) {
             session.setAttribute("nickname1", nickname1);
@@ -144,15 +146,17 @@ class GameController {
             return "redirect:/game";
         } 
         else {
-            int resetLife = 150;
-            characterRepository.getFighterById(1).setLife(resetLife);
-            characterRepository.getFighterById(2).setLife(resetLife);
+            characterRepository.getFighterById(1).setLife(150);
+            characterRepository.getFighterById(2).setLife(150);
             return "redirect:/game2";
         }
     }
 
     @GetMapping("/game2")
     public String game2(Model model, HttpSession session) {
+
+        model.addAttribute("nickname1", session.getAttribute("nickname1"));
+        model.addAttribute("nickname2", session.getAttribute("nickname2"));
 
         if(session.getAttribute("currentPlayer") == null) {
             double probability = Math.random();
@@ -173,7 +177,7 @@ class GameController {
                 model.addAttribute("message", "The attack failed");
             }
         }
-        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? "Player 1" : "Player 2");
+        model.addAttribute("currentPlayer", session.getAttribute("currentPlayer").equals(1) ? session.getAttribute("nickname1") : session.getAttribute("nickname2"));
         model.addAttribute("lifeP1", characterRepository.getFighterById(1).getLife());
         model.addAttribute("lifeP2", characterRepository.getFighterById(2).getLife());
 
